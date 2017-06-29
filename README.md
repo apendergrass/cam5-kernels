@@ -4,30 +4,30 @@ Demos and tools for radiative feedback kernels from CESM-CAM5
 ----
 
 ## Citation
-Data citation for the data associated with these scripts:
-Angeline G. Pendergrass, 2017, [DOI:10.5065/D6F47MT6](http://dx.doi.org/10.5065/D6F47MT6)
+Please cite the data associated with these scripts:
+Angeline G. Pendergrass (2017) [DOI:10.5065/D6F47MT6](http://dx.doi.org/10.5065/D6F47MT6)
 
 Scientific reference for the data associated with these scripts: Forthcoming (stay tuned)
 
 ---- 
 
 ## Quick Start
-You'll need to have [NCL](https://www.ncl.ucar.edu/), Matlab, and git installed.
+You'll need to have [NCL](https://www.ncl.ucar.edu/) and Matlab.
 1. Download the kernels, forcing, and demo data here: https://www.earthsystemgrid.org/workspace/user/summaryRequest.html
 2. Unzip them.  
 `tar -xvf cam5-kernels.tar`  
 3. Get the code here into the `cam5-kernels` directory.
-a. If you have `git` installed:  
+b. Download the latest [release](https://github.com/apendergrass/cam5-kernels/releases) as a `.tar.gz` and then:  
+`tar -xvvzf cam5-kernels-0.0.tar.gz -C cam5-kernels/ --strip-components=1`  
+b. An alternative if you have `git` installed:  
 `cd cam5-kernels/`  
 `rm -fr scripts/`  
 `git init`  
 `git remote add origin https://github.com/apendergrass/cam5-kernels.git`  
 `git pull origin master`  
-b. Alternatively, download the latest [release](https://github.com/apendergrass/cam5-kernels/releases) as a `.tar.gz` and then:  
-`tar -xvvzf cam5-kernels-0.0.tar.gz -C cam5-kernels/ --strip-components=1`  
-Either way, you should have `tools/` sitting alongside `kernels/`, `forcing/`, and `demodata/`; and `scripts/` will be replaced with the up-to-date version).  
+Either way, you should have `tools/` sitting alongside `kernels/`, `forcing/`, and `demodata/`; and `scripts/` will be replaced with the up-to-date version.  
 3. Then you are ready for a test run! Try the things below - they use the included demo data. Expected results are included; if you get a different result, something might have gone wrong with your installation.
-4. After the test run, you can go through and replace everything from demodata/ with your own (real) data.
+4. After the test run, you can go through and replace everything from `demodata/` with your own data.
 
 
 ## Basic package
@@ -93,6 +93,5 @@ Ryan Kramer (University of Miami) and William Frey (University of Colorado): val
 
 -----
 
-Questions/comments? Please post in the issues tab.  
-Other info: apgrass at ucar dot edu
+Questions/comments? Post in the issues tab, or email me at apgrass at ucar dot edu
 
