@@ -13,7 +13,7 @@ Scientific reference for the data associated with these scripts: Forthcoming (st
 
 ## Quick Start
 You'll need to have [NCL](https://www.ncl.ucar.edu/) and Matlab.
-1. Download the kernels, forcing, and demo data here: https://www.earthsystemgrid.org/workspace/user/summaryRequest.html
+1. Download the kernels, forcing, and demo data here: https://www.earthsystemgrid.org/dataset/ucar.cgd.ccsm4.cam5-kernels.html  
 2. Unzip them.  
 `tar -xvf cam5-kernels.tar`  
 3. Get the code here into the `cam5-kernels` directory.
