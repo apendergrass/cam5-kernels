@@ -139,8 +139,8 @@ d_sw_cs=ncread(changefile,'FSNTC');
 d_lw=ncread(changefile,'FLNT');
 d_lw_cs=ncread(changefile,'FLNTC');
 
-d_cre_sw=d_sw-d_sw_cs;
-d_cre_lw=d_lw-d_lw_cs;
+d_cre_sw=d_sw_cs-d_sw;
+d_cre_lw=d_lw_cs-d_sw;
 
 
 %%%% Cloud masking of radiative forcing
@@ -149,16 +149,16 @@ sw=ncread(ghgfile,'FSNT');
 sw_cs=ncread(ghgfile,'FSNTC');
 lw=ncread(ghgfile,'FLNT');
 lw_cs=ncread(ghgfile,'FLNTC');
-ghg_sw=sw-sw_cs;
-ghg_lw=lw-lw_cs;
+ghg_sw=sw_cs-sw;
+ghg_lw=lw_cs-lw;
 
 aerosolfile='forcing/aerosol.forcing.nc';
 sw=ncread(aerosolfile,'FSNT');
 sw_cs=ncread(aerosolfile,'FSNTC');
 lw=ncread(aerosolfile,'FLNT');
 lw_cs=ncread(aerosolfile,'FLNTC');
-aerosol_sw=sw-sw_cs;
-aerosol_lw=lw-lw_cs;
+aerosol_sw=sw_cs-sw;
+aerosol_lw=lw_cs-lw;
 
 cloud_masking_of_forcing_sw=aerosol_sw+ghg_sw;
 cloud_masking_of_forcing_lw=aerosol_lw+ghg_lw;
