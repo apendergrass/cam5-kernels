@@ -140,7 +140,7 @@ d_lw=ncread(changefile,'FLNT');
 d_lw_cs=ncread(changefile,'FLNTC');
 
 d_cre_sw=d_sw_cs-d_sw;
-d_cre_lw=d_lw_cs-d_sw;
+d_cre_lw=d_lw_cs-d_lw;
 
 
 %%%% Cloud masking of radiative forcing
@@ -166,8 +166,8 @@ cloud_masking_of_forcing_lw=aerosol_lw+ghg_lw;
 %%%%%% Cloud feedback. 
 %%% CRE + cloud masking of radiative forcing + corrections for each feedback
 
-dLW_cloud=d_cre_lw+cloud_masking_of_forcing_lw+(dLW_q_cs-dLW_q)+(dLW_ta_cs-dLW_ta)+(dLW_ts_cs-dLW_ts);
-dSW_cloud=d_cre_sw+cloud_masking_of_forcing_sw+(dSW_q_cs-dSW_q)+(dSW_alb_cs-dSW_alb);
+dLW_cloud=-d_cre_lw+cloud_masking_of_forcing_lw+(dLW_q_cs-dLW_q)+(dLW_ta_cs-dLW_ta)+(dLW_ts_cs-dLW_ts);
+dSW_cloud=-d_cre_sw+cloud_masking_of_forcing_sw+(dSW_q_cs-dSW_q)+(dSW_alb_cs-dSW_alb);
 
 %Take global and annual averages
 dLW_cloud_globalmean=nansum(nansum(nanmean(-dLW_cloud,3).*weight,2),1);
