@@ -82,8 +82,8 @@ Calculate LW and SW cloud feedbacks
 `matlab -nosplash -nodesktop -r "addpath ./tools; cloud_feedback_demo"` 
 
 Expected result:  
-> `LW Cloud Feedback: -0.44253 W m^-2 K^-1`  
-> `SW Cloud Feedback: 0.67713 W m^-2 K^-1`  
+> `LW Cloud Feedback: 0.051862 W m^-2 K^-1`  
+> `SW Cloud Feedback: 0.5819 W m^-2 K^-1`  
 
 ---
 
