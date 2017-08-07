@@ -16,8 +16,9 @@ You'll need to have [NCL](https://www.ncl.ucar.edu/) and Matlab.
 1. Download the kernels, forcing, and demo data here: https://www.earthsystemgrid.org/dataset/ucar.cgd.ccsm4.cam5-kernels.html  
 2. Unzip them.  
 `tar -xvf cam5-kernels.tar`  
-3. Get the code here into the `cam5-kernels` directory.
-b. Download the latest [release](https://github.com/apendergrass/cam5-kernels/releases) as a `.tar.gz` and then:  
+3. Get the code here into the `cam5-kernels` directory. 
+
+a. Download the latest [release](https://github.com/apendergrass/cam5-kernels/releases) as a `.tar.gz` and then:  
 `tar -xvvzf cam5-kernels-0.0.tar.gz -C cam5-kernels/ --strip-components=1`  
 b. An alternative if you have `git` installed:  
 `cd cam5-kernels/`  
