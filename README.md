@@ -16,19 +16,18 @@ You'll need to have [NCL](https://www.ncl.ucar.edu/) and Matlab.
 1. Download the kernels, forcing, and demo data here: https://www.earthsystemgrid.org/dataset/ucar.cgd.ccsm4.cam5-kernels.html  
 2. Unzip them.  
 `tar -xvf cam5-kernels.tar`  
-3. Get the code here into the `cam5-kernels` directory. 
-
-a. Download the latest [release](https://github.com/apendergrass/cam5-kernels/releases) as a `.tar.gz` and then:  
+3. Get the code here into the `cam5-kernels` directory.   
+  a. Download the latest [release](https://github.com/apendergrass/cam5-kernels/releases) as a `.tar.gz` and then:  
 `tar -xvvzf cam5-kernels-0.0.tar.gz -C cam5-kernels/ --strip-components=1`  
-b. An alternative if you have `git` installed:  
+  b. An alternative if you have `git` installed:  
 `cd cam5-kernels/`  
 `rm -fr scripts/`  
 `git init`  
 `git remote add origin https://github.com/apendergrass/cam5-kernels.git`  
 `git pull origin master`  
 Either way, you should have `tools/` sitting alongside `kernels/`, `forcing/`, and `demodata/`; and `scripts/` will be replaced with the up-to-date version.  
-3. Then you are ready for a test run! Try the things below - they use the included demo data. Expected results are included; if you get a different result, something might have gone wrong with your installation.
-4. After the test run, you can go through and replace everything from `demodata/` with your own data.
+4. Then you are ready for a test run! Try the things below - they use the included demo data. Expected results are included; if you get a different result, something might have gone wrong with your installation.
+5. After the test run, you can go through and replace everything from `demodata/` with your own data.
 
 
 ## Basic package
