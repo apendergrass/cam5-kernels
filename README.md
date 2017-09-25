@@ -4,7 +4,7 @@ Demos and tools for radiative feedback kernels from CESM-CAM5
 ----
 
 ## Citation
-Please cite the data associated with these scripts:
+Download (and cite) the data associated with these scripts:
 Angeline G. Pendergrass (2017) [DOI:10.5065/D6F47MT6](http://dx.doi.org/10.5065/D6F47MT6)
 
 Scientific reference for the data associated with these scripts: Forthcoming (stay tuned)
