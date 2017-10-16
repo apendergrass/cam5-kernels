@@ -10,8 +10,7 @@ this software [![DOI](https://zenodo.org/badge/95038532.svg)](https://zenodo.org
 
 Scientific reference for the data associated with these scripts: 
 
-<b>Pendergrass, A.G.</b>, Andrew Conley and Francis Vitt: Surface and top-of-atmosphere radiative feedback kernels for CESM-CAM5. In discussion/review at <i>Earth System Science Data</i>. <a href="https://doi.org/10.51\
-94/essd-2017-108">doi:10.5194/essd-2017-108</a>.
+Pendergrass, A.G., Andrew Conley and Francis Vitt: Surface and top-of-atmosphere radiative feedback kernels for CESM-CAM5. In discussion/review at <i>Earth System Science Data</i>. <a href="https://doi.org/10.5194/essd-2017-108">doi:10.5194/essd-2017-108</a>.
 
 
 ---- 
