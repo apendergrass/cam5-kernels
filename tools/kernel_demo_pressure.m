@@ -14,6 +14,8 @@ changefile3d='changefields.plev.nc';
 % File with the 2-d changes in climate: (ts,TS,T,)
 changefile='demodata/changefields.nc';
 
+% You'll need to generate the file of pressure differences. You 
+% can do this by running calcdp_plev.ncl.
 
 % You'll also need to generate the change in moisture for 1 K
 % warming at constant RH. You can do this by running calcdq1k.ncl
@@ -31,8 +33,7 @@ basefile='demodata/basefields.nc';
 p_Pa=ncread('t.kernel.plev.nc','plev');
 p_hPa=double(ncread('t.kernel.plev.nc','lev_p')); 
 
-pdiff=abs(diff([p_hPa; 0]));
-pdiff=repmat(permute(repmat(pdiff,[1 12]),[3 4 1 2]),[288 192 1 1]);
+pdiff=ncread('dp_plev.nc','dp')/100;
 
 p=repmat(permute(repmat(p_hPa,[1 12]),[3 4 1 2]),[288 192 1 1]);
 
