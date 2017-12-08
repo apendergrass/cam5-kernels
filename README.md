@@ -58,9 +58,9 @@ Standard CMIP tropospheric pressure levels are the script's default. Stratospher
 `matlab -nosplash -nodesktop -r "addpath ./tools; kernel_demo_pressure"`  
 
 Expected result:  
-> `Temperature feedback: -3.7182 W m^-2 K^-1`  
+> `Temperature feedback: -3.7424 W m^-2 K^-1`  
 > `Surface albedo feedback: 0.53264 W m^-2 K^-1`  
-> `Water vapor feedback: 1.9939 W m^-2 K^-1`  
+> `Water vapor feedback: 2.0833 W m^-2 K^-1`  
 
 ## Logarithmic moisture 
 For the water vapor kernel, use the logarithm of mositure instead of moisture itself as the independent variable. This is more accurate because the radiative effects of water vapor scale with its logarithm.   
@@ -94,7 +94,7 @@ Expected result:
 
 ## Acknowledgements  
 Andrew Conley and Francis Vitt (NCAR): help setting up the PORT calculation to make the kernels.  
-Ryan Kramer (University of Miami) and William Frey (University of Colorado): valuable feedback and help testing the code
+Ryan Kramer (University of Miami) and William Frey (University of Colorado): valuable feedback and help testing the code. Paulo Ceppi (University of Reading): valuable testing and bug identification in the code. 
 
 -----
 
