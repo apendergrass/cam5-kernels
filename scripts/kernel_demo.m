@@ -11,10 +11,7 @@
 % File with the changes in climate: (ts, temp) (TS,T,Q)
 changefile='demodata/changefields.nc';
 
-% You'll also need to generate the change in moisture for 1 K
-% warming at constant RH. You can do this by running ncl scripts/calcdq1k.ncl
-
-% File with initial and final surface SW downwelling and net radiative fields (for calculating
+% File with initial surface SW downwelling and net radiative fields (for calculating
 % albedo). 
 basefile='demodata/basefields.nc';
 

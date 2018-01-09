@@ -13,12 +13,6 @@ changefile='demodata/changefields.nc';
 
 basefile='demodata/basefields.nc'; 
 
-% You'll also need to generate the change in moisture for 1 K
-% warming at constant RH. You can do this by running calcdq1k.ncl
-% (you'll have to supply it with temperature and moisture fields
-% and their pressure grid - you can get the CESM pressure grid by
-% running calcp.ncl).
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 lat=ncread('kernels/PS.nc','lat');
@@ -49,18 +43,24 @@ p_tropopause=repmat(permute(repmat(permute(repmat(p_tropopause_zonalmean',[lengt
 
 %%%%%%% Water vapor feedback : using logarithmic q 
 
-% Calculate the change in moisture for 1 K warming at constant relative humidity. 
+% Calculate the change in moisture per degree warming at constant relative humidity. 
 % Run the accompanying NCL script with your input files, or
 % implement here.                                                                                               
                            
-
-
-dq1k=ncread('dq1k.nc','dq1k');
-
 % Read initial moisture
 q0=ncread(basefile,'Q');
 
-dlogq1k=dq1k./q0;
+t1=ncread(basefile,'temp');
+dta=ncread(changefile,'temp');
+addpath scripts/
+qs1 = calcsatspechum(t1,p);
+qs2 = calcsatspechum(t1+dta,p);
+dqsdt = (qs2 - qs1)./dta;
+rh = q0./qs1;
+dqdt = rh.*dqsdt;
+
+dlogqdt=dqdt./q0;
+
 
 % Read kernels
 q_LW_kernel=ncread('kernels/q.kernel.nc','FLNT');
@@ -68,12 +68,10 @@ q_SW_kernel=ncread('kernels/q.kernel.nc','FSNT');
 
 
 
-
-
 % Normalize kernels by the change in moisture for 1 K warming at
 % constant RH (log-q kernel)
-logq_LW_kernel=q_LW_kernel./dlogq1k;
-logq_SW_kernel=q_SW_kernel./dlogq1k;
+logq_LW_kernel=q_LW_kernel./dlogqdt;
+logq_SW_kernel=q_SW_kernel./dlogqdt;
 
 % Read the change in moisture
 dq=ncread(changefile,'Q');
@@ -85,8 +83,8 @@ dq=dq.*(p>=p_tropopause);
 dlogq=dq./q0; 
 
 % Convolve moisture kernel with change in moisture
-dLW_logq=squeeze(sum(logq_LW_kernel.*dlogq,3));
-dSW_logq=squeeze(sum(logq_SW_kernel.*dlogq,3));
+dLW_logq=squeeze(nansum(logq_LW_kernel.*dlogq,3));
+dSW_logq=squeeze(nansum(logq_SW_kernel.*dlogq,3));
 
 % Add the LW and SW responses. Note the sign convention difference
 % between LW and SW!

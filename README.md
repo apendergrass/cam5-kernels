@@ -37,20 +37,18 @@ Either way, you should have `tools/` sitting alongside `kernels/`, `forcing/`, a
 ## Basic package
 Calculate the necessary components and calculate the temperature, water vapor, and surface albedo feedbacks on CESM hybrid sigma-pressure levels.  
 `ncl scripts/calcp.ncl`  
-`ncl scripts/calcdq1k.ncl`  
 `matlab -nosplash -nodesktop -r "addpath ./scripts; kernel_demo"`  
 
 Expected result:  
 > `Temperature feedback: -3.7261 W m^-2 K^-1  `  
 > `Surface albedo feedback: 0.53264 W m^-2 K^-1  `  
-> `Water vapor feedback: 2.0881 W m^-2 K^-1  `  
+> `Water vapor feedback: Water vapor feedback: 1.6158 W m^-2 K^-1  `  
 
 
 ## Conversion from hybrid sigma-pressure to standard pressure vertical coordinate
 Standard CMIP tropospheric pressure levels are the script's default. Stratospheric extension is also included.   
 `ncl scripts/calcp.ncl`  
 `ncl tools/convert_base_to_plevs.ncl`  
-`ncl tools/calcdq1k_plevs.ncl`  
 `ncl tools/calcdp_plev.ncl`  
 `ncl tools/convert_change_to_plevs.ncl`  
 `ncl tools/t_kernel_to_plev.ncl`  
@@ -60,17 +58,16 @@ Standard CMIP tropospheric pressure levels are the script's default. Stratospher
 Expected result:  
 > `Temperature feedback: -3.7424 W m^-2 K^-1`  
 > `Surface albedo feedback: 0.53264 W m^-2 K^-1`  
-> `Water vapor feedback: 2.0833 W m^-2 K^-1`  
+> `Water vapor feedback: 1.5897 W m^-2 K^-1`  
 
 ## Logarithmic moisture 
 For the water vapor kernel, use the logarithm of mositure instead of moisture itself as the independent variable. This is more accurate because the radiative effects of water vapor scale with its logarithm.   
 
 `ncl scripts/calcp.ncl`  
-`ncl scripts/calcdq1k.ncl`  
 `matlab -nosplash -nodesktop -r "addpath ./tools; logq_demo"`
 
 Expected result:  
->`Water vapor feedback: 2.0881 W m^-2 K^-1`  
+>`Water vapor feedback: 1.6158 W m^-2 K^-1`  
 
 ## Planck and lapse rate feedback decomposition
 Calculate the Planck and lapse rate feedbacks   
@@ -87,8 +84,8 @@ Calculate LW and SW cloud feedbacks
 `matlab -nosplash -nodesktop -r "addpath ./tools; cloud_feedback_demo"` 
 
 Expected result:  
-> `LW Cloud Feedback: 0.051862 W m^-2 K^-1`  
-> `SW Cloud Feedback: 0.5819 W m^-2 K^-1`  
+> `LW Cloud Feedback: -0.055163 W m^-2 K^-1`  
+> `SW Cloud Feedback: 0.57637 W m^-2 K^-1`  
 
 ---
 

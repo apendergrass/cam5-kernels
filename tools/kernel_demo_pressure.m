@@ -17,15 +17,12 @@ changefile='demodata/changefields.nc';
 % You'll need to generate the file of pressure differences. You 
 % can do this by running calcdp_plev.ncl.
 
-% You'll also need to generate the change in moisture for 1 K
-% warming at constant RH. You can do this by running calcdq1k.ncl
-% (you'll have to supply it with temperature and moisture fields
-% and their pressure grid - you can get the CESM pressure grid by
-% running calcp.ncl).
-
 % File with initial surface SW downwelling and net radiative fields (for calculating
 % albedo). 
 basefile='demodata/basefields.nc';
+
+% Initial fields on pressure levels 
+basefile3d='basefields.plev.nc';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -124,10 +121,16 @@ disp(['Surface albedo feedback: ' num2str(alb_feedback) ' W m^-2 K^-1'])
 
 %%%%%%% Water vapor feedback
 
-% Calculate the change in moisture for 1 K warming at constant relative humidity. 
-% Run the accompanying NCL script with your input files, or
-% implement here.                                                                                                                          
-dq1k=ncread('dq1k.plev.nc','dq1k');
+% Calculate the change in moisture per degree warming at constant relative humidity. 
+q1=ncread(basefile3d,'Q');
+t1=ncread(basefile3d,'temp');
+addpath scripts/
+qs1 = calcsatspechum(t1,p);
+qs2 = calcsatspechum(t1+dta,p);
+dqsdt = (qs2 - qs1)./dta;
+rh = q1./qs1;
+dqdt = rh.*dqsdt;
+
 
 % Read kernels
 q_LW_kernel=ncread('q.kernel.plev.nc','FLNT');
@@ -135,8 +138,8 @@ q_SW_kernel=ncread('q.kernel.plev.nc','FSNT');
 
 % Normalize kernels by the change in moisture for 1 K warming at
 % constant RH
-q_LW_kernel=q_LW_kernel./dq1k;
-q_SW_kernel=q_SW_kernel./dq1k;
+q_LW_kernel=q_LW_kernel./dqdt;
+q_SW_kernel=q_SW_kernel./dqdt;
 
 % Read the change in moisture
 dq=ncread(changefile3d,'Q');

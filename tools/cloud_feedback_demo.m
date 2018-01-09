@@ -8,9 +8,6 @@
 % File with the changes in climate: (ts, temp) (TS,T,Q)
 changefile='demodata/changefields.nc';
 
-% You'll also need to generate the change in moisture for 1 K
-% warming at constant RH. You can do this by running ncl scripts/calcdq1k.ncl
-
 % File with initial surface SW downwelling and net radiative fields (for calculating
 % albedo). 
 basefile='demodata/basefields.nc';
@@ -100,8 +97,15 @@ dSW_alb_cs=alb_kernel_clearsky.*dalb;
 
 %%%%%%% Water vapor feedback
 
-% Read change in mixing ratio for 1 K warming at constant RH
-dq1k=ncread('dq1k.nc','dq1k');
+% Read change in mixing ratio per degree warming at constant RH
+q1=ncread(basefile,'Q');
+t1=ncread(basefile,'temp');
+addpath scripts/
+qs1 = calcsatspechum(t1,p);
+qs2 = calcsatspechum(t1+dta,p);
+dqsdt = (qs2 - qs1)./dta;
+rh = q1./qs1;
+dqdt = rh.*dqsdt;
 
 % Read q kernels
 q_LW_kernel=ncread('kernels/q.kernel.nc','FLNT');
@@ -111,10 +115,10 @@ q_SW_kernel_clearsky=ncread('kernels/q.kernel.nc','FSNTC');
 
 % Normalize kernels by the change in moisture for 1 K warming at
 % constant RH (linear)
-q_LW_kernel=q_LW_kernel./dq1k;
-q_SW_kernel=q_SW_kernel./dq1k;
-q_LW_kernel_clearsky=q_LW_kernel_clearsky./dq1k;
-q_SW_kernel_clearsky=q_SW_kernel_clearsky./dq1k;
+q_LW_kernel=q_LW_kernel./dqdt;
+q_SW_kernel=q_SW_kernel./dqdt;
+q_LW_kernel_clearsky=q_LW_kernel_clearsky./dqdt;
+q_SW_kernel_clearsky=q_SW_kernel_clearsky./dqdt;
 
 % Read the change in moisture
 dq=ncread(changefile,'Q');
@@ -123,10 +127,10 @@ dq=ncread(changefile,'Q');
 dq=dq.*(p>=p_tropopause);
 
 % Convolve moisture kernel with change in moisture
-dLW_q=squeeze(sum(q_LW_kernel.*dq,3));
-dSW_q=squeeze(sum(q_SW_kernel.*dq,3));
-dLW_q_cs=squeeze(sum(q_LW_kernel_clearsky.*dq,3));
-dSW_q_cs=squeeze(sum(q_SW_kernel_clearsky.*dq,3));
+dLW_q=squeeze(nansum(q_LW_kernel.*dq,3));
+dSW_q=squeeze(nansum(q_SW_kernel.*dq,3));
+dLW_q_cs=squeeze(nansum(q_LW_kernel_clearsky.*dq,3));
+dSW_q_cs=squeeze(nansum(q_SW_kernel_clearsky.*dq,3));
 
 % Add the LW and SW responses. Note the sign convention difference
 % between LW and SW!
