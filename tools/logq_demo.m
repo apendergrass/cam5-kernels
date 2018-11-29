@@ -48,18 +48,18 @@ p_tropopause=repmat(permute(repmat(permute(repmat(p_tropopause_zonalmean',[lengt
 % implement here.                                                                                               
                            
 % Read initial moisture
-q0=ncread(basefile,'Q');
+q0=ncread(basefile,'Q'); % kg/kg
 
 t1=ncread(basefile,'temp');
 dta=ncread(changefile,'temp');
 addpath scripts/
-qs1 = calcsatspechum(t1,p);
-qs2 = calcsatspechum(t1+dta,p);
+qs1 = calcsatspechum(t1,p); % g/kg
+qs2 = calcsatspechum(t1+dta,p); % g/kg
 dqsdt = (qs2 - qs1)./dta;
-rh = q0./qs1;
+rh = 1000*q0./qs1;
 dqdt = rh.*dqsdt;
 
-dlogqdt=dqdt./q0;
+dlogqdt=dqdt./(1000*q0);
 
 
 % Read kernels
