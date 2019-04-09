@@ -43,7 +43,7 @@ Calculate the necessary components and calculate the temperature, water vapor, a
 Expected result:  
 > `Temperature feedback: -3.7261 W m^-2 K^-1  `  
 > `Surface albedo feedback: 0.53264 W m^-2 K^-1  `  
-> `Water vapor feedback: Water vapor feedback: 1.6158 W m^-2 K^-1  `  
+> `Water vapor feedback: Water vapor feedback: 2.0881 W m^-2 K^-1  `  
 
 
 ## Conversion from hybrid sigma-pressure to standard pressure vertical coordinate
@@ -59,7 +59,7 @@ Standard CMIP tropospheric pressure levels are the script's default. Stratospher
 Expected result:  
 > `Temperature feedback: -3.7424 W m^-2 K^-1`  
 > `Surface albedo feedback: 0.53264 W m^-2 K^-1`  
-> `Water vapor feedback: 2.0881 W m^-2 K^-1`  
+> `Water vapor feedback: 1.5897 W m^-2 K^-1`  
 
 ## Logarithmic moisture 
 For the water vapor kernel, use the logarithm of mositure instead of moisture itself as the independent variable. This is more accurate because the radiative effects of water vapor scale with its logarithm.   
@@ -92,7 +92,7 @@ Expected result:
 
 ## Acknowledgements  
 Andrew Conley and Francis Vitt (NCAR): help setting up the PORT calculation to make the kernels.  
-Ryan Kramer (University of Miami) and William Frey (University of Colorado): valuable feedback and help testing the code. Paulo Ceppi (University of Reading): valuable testing and bug identification in the code. 
+Thanks to Ryan Kramer (University of Miami), William Frey (University of Colorado), Paulo Ceppi (University of Reading), and Hanjun Kim (Pusan University) for feedback, testing, and bug identification. 
 
 -----
 
