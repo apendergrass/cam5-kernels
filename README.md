@@ -59,7 +59,7 @@ Standard CMIP tropospheric pressure levels are the script's default. Stratospher
 Expected result:  
 > `Temperature feedback: -3.7424 W m^-2 K^-1`  
 > `Surface albedo feedback: 0.53264 W m^-2 K^-1`  
-> `Water vapor feedback: 1.5897 W m^-2 K^-1`  
+> `Water vapor feedback: 2.0881 W m^-2 K^-1`  
 
 ## Logarithmic moisture 
 For the water vapor kernel, use the logarithm of mositure instead of moisture itself as the independent variable. This is more accurate because the radiative effects of water vapor scale with its logarithm.   
