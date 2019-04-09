@@ -37,6 +37,7 @@ Either way, you should have `tools/` sitting alongside `kernels/`, `forcing/`, a
 ## Basic package
 Calculate the necessary components and calculate the temperature, water vapor, and surface albedo feedbacks on CESM hybrid sigma-pressure levels.  
 `ncl scripts/calcp.ncl`  
+`ncl scripts/calcdq1k.ncl`  
 `matlab -nosplash -nodesktop -r "addpath ./scripts; kernel_demo"`  
 
 Expected result:  
