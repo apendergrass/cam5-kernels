@@ -1,6 +1,6 @@
 function [qs] = calcsatspechum(t,p)
 
-% % T is temperature in Kelvins, P is pressure in hPa 
+% % T is temperature, P is pressure in hPa 
 
 %   ## Formulae from Buck (1981):
   es = (1.0007+(3.46e-6*p)).*6.1121.*exp(17.502*(t-273.15)./(240.97+(t-273.15)));
