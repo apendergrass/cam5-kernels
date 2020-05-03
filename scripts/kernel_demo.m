@@ -63,7 +63,7 @@ dta=dta.*(p>=p_tropopause);
 ta_kernel=ncread('kernels/t.kernel.nc','FLNT'); 
 
 % Convolve air temperature kernel with air temperature change
-dLW_ta=squeeze(sum(ta_kernel.*dta,3));
+dLW_ta=squeeze(nansum(ta_kernel.*dta,3));
 
 % Add the surface and air temperature response; Take the annual average and global area average 
 dLW_t_globalmean=nansum(nansum(nanmean(-dLW_ta-dLW_ts,3).*weight,2),1);    
@@ -132,8 +132,8 @@ dq=ncread(changefile,'Q');
 dq=dq.*(p>=p_tropopause);
 
 % Convolve moisture kernel with change in moisture
-dLW_q=squeeze(sum(q_LW_kernel.*dq,3));
-dSW_q=squeeze(sum(q_SW_kernel.*dq,3));
+dLW_q=squeeze(nansum(q_LW_kernel.*dq,3));
+dSW_q=squeeze(nansum(q_SW_kernel.*dq,3));
 
 % Add the LW and SW responses. Note the sign convention difference
 % between LW and SW!
