@@ -17,9 +17,9 @@ Pendergrass, A.G., Andrew Conley and Francis Vitt: Surface and top-of-atmosphere
 
 ## Quick Start
 You'll need to have [NCL](https://www.ncl.ucar.edu/) and Matlab.
-1. Download the kernels, forcing, and demo data here: https://www.earthsystemgrid.org/dataset/ucar.cgd.ccsm4.cam5-kernels.html or here: https://zenodo.org/record/997902 
+1. Download the kernels, forcing, and demo data here: https://zenodo.org/record/997902 
 2. Unzip them.  
-`tar -xvf cam5-kernels.tar`  If you got them from Zenodo, you should organize the files as follows: 
+`tar -xvf cam5-kernels.tar`  Organize the files as follows: 
 ```mkdir kernels
 mv *.kernel.nc kernels/
 mv PS.nc kernels/
